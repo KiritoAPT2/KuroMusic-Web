@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KuroMusic</title>
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="preconnect" href="https://db.onlinewebfonts.com">
+  <style>
+    @font-face {
+      font-family: "Helvetica Regular";
+      src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot");
+      src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.eot?#iefix") format("embedded-opentype"),
+           url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff2") format("woff2"),
+           url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff") format("woff"),
+           url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.ttf") format("truetype");
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Helvetica Regular", ui-sans-serif, system-ui, sans-serif;
+      background: #000;
+      color: #1e325a;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    ::selection { background: #8B5CF6; color: #fff; }
+
+    .main-section {
+      max-width: 1536px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0;
+    }
+
+    @media (min-width: 768px) {
+      .main-section {
+        border-radius: 0 0 3rem 3rem;
+        min-height: 100vh;
+      }
+    }
+
+    .bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: blur(2.5px);
+    }
+
+    .content-overlay {
+      position: relative;
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.5rem;
+      width: 100%;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (min-width: 768px) {
+      nav { padding: 1.5rem 2.5rem; }
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+    }
+
+    .nav-links a {
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .nav-links a.active {
+      color: #8B5CF6;
+      background: rgba(139,92,246,0.15);
+    }
+
+    .nav-title-mobile {
+      display: block;
+      font-size: 1.125rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    @media (min-width: 768px) {
+      .nav-title-mobile { display: none; }
+    }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 0.8125rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-github:hover {
+      background: rgba(255,255,255,0.18);
+    }
+
+    .btn-github svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .hero {
+      padding-top: 2rem;
+      text-align: center;
+      max-width: 56rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 80vh;
+      justify-content: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(139,92,246,0.15);
+      border: 1px solid rgba(139,92,246,0.25);
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #A78BFA;
+      margin-bottom: 1rem;
+    }
+
+    .badge svg {
+      width: 0.875rem;
+      height: 0.875rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 80px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1.05;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    .hero p {
+      font-size: clamp(0.9rem, 2vw, 1.125rem);
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.75rem;
+      max-width: 36rem;
+      line-height: 1.625;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+    }
+
+    .tech-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .tech-logos img, .tech-logos svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      opacity: 0.5;
+      filter: drop-shadow(0 1px 6px rgba(0,0,0,0.4));
+    }
+
+    .download-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.25rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-download:hover {
+      background: rgba(255,255,255,0.18);
+      transform: translateY(-1px);
+    }
+
+    .btn-download.primary {
+      background: #8B5CF6;
+      border-color: #8B5CF6;
+      color: #fff;
+    }
+
+    .btn-download.primary:hover {
+      background: #7C3AED;
+      border-color: #7C3AED;
+    }
+
+    .btn-download svg {
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+
+    .btn-download .sub-text {
+      font-size: 0.625rem;
+      opacity: 0.6;
+    }
+
+    .floating-card {
+      position: fixed;
+      display: none;
+      z-index: 999;
+    }
+
+    @media (min-width: 768px) {
+      .floating-card { display: block; }
+    }
+
+    .card-github {
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(139,92,246,0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(139,92,246,0.25);
+      border-radius: 1rem;
+      padding: 1rem;
+      min-width: 180px;
+      transition: all 0.25s ease;
+    }
+
+    @media (min-width: 64rem) {
+      .card-github {
+        bottom: 2.5rem;
+        left: 2.5rem;
+      }
+    }
+
+    .card-github:hover {
+      background: rgba(139,92,246,0.22);
+      border-color: rgba(139,92,246,0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(139,92,246,0.2);
+    }
+
+    .card-github .follow-count {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .card-github .follow-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .card-github .btn-follow {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-top: 0.5rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(139,92,246,0.2);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: #fff;
+      font-size: 0.75rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      width: fit-content;
+    }
+
+    .card-github .btn-follow:hover {
+      background: rgba(139,92,246,0.35);
+      border-color: rgba(139,92,246,0.6);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .footer a {
+      color: #8B5CF6;
+      text-decoration: none;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 767px) {
+      .hide-mobile { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-section" id="inicio">
+    <video class="bg-video" autoplay muted loop playsinline src="assets/bg.mp4"></video>
+
+    <div class="content-overlay">
+      <nav>
+        <div class="hide-mobile"></div>
+        <ul class="nav-links">
+          <li><a href="#inicio" class="active">Home</a></li>
+          <li><a href="https://github.com/KiritoAPT2/KuroMusic/releases/latest/download/KuroMusic.apk">Descargar</a></li>
+          <li><a href="https://github.com/KiritoAPT2/KuroMusic" target="_blank">Desarrolladores</a></li>
+          <li><a href="https://github.com/KiritoAPT2/KuroMusic/blob/main/LICENSE" target="_blank">Licencia</a></li>
+        </ul>
+        <span class="nav-title-mobile">KuroMusic</span>
+        <a href="https://github.com/KiritoAPT2/KuroMusic" target="_blank" class="btn-github">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub oficial
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </nav>
+
+      <section class="hero">
+        <div class="badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          Reproductor de Música
+        </div>
+        <h1>KuroMusic</h1>
+        <p>Cliente open-source de música para Android. Sonido de alta fidelidad con ecualizador profesional, perfiles de sonido WARM, BASS, LOFI y STUDIO, diseño Material You y cero anuncios.</p>
+        <div class="tech-logos">
+          <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </div>
+        <div class="download-buttons">
+          <a href="https://github.com/KiritoAPT2/KuroMusic/releases/latest/download/KuroMusic.apk" class="btn-download primary">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Android <span class="sub-text">(APK)</span>
+          </a>
+          <a href="https://github.com/KiritoAPT2/KuroMusic" target="_blank" class="btn-download">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Código Fuente
+          </a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        Hecho con ❤️ · <a href="https://github.com/KiritoAPT2/KuroMusic" target="_blank">KuroMusic</a> · 2026
+      </footer>
+    </div>
+  </div>
+
+  <div class="floating-card card-github">
+    <div class="follow-count" id="followers">—</div>
+    <div class="follow-label">Seguidores en GitHub</div>
+    <div style="display:flex;align-items:center;gap:0.25rem;margin-top:0.25rem;">
+      <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.5)" width="12" height="12"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      <span class="follow-label" style="font-size:0.65rem;">KiritoAPT2</span>
+    </div>
+    <a href="https://github.com/KiritoAPT2" target="_blank" class="btn-follow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+      Sígueme en GitHub
+    </a>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    const navItems = document.querySelectorAll('.nav-links a');
+    const sections = ['inicio', 'features'].map(id => document.getElementById(id)).filter(Boolean);
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY + 150;
+      let current = navItems[0];
+      sections.forEach((sec, i) => {
+        if (sec && sec.offsetTop <= scrollY) current = navItems[i];
+      });
+      navItems.forEach(a => a.classList.remove('active'));
+      if (current) current.classList.add('active');
+    });
+
+    fetch('https://api.github.com/users/KiritoAPT2')
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById('followers').textContent = d.followers || '—';
+      })
+      .catch(() => {
+        document.getElementById('followers').textContent = '—';
+      });
+  </script>
+</body>
+</html>
