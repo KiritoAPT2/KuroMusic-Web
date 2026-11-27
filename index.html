@@ -82,13 +82,31 @@
     }
 
     .bg-video {
-      position: absolute;
-      inset: 0;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
-      height: 100%;
+      max-width: 1536px;
+      height: 100vh;
       object-fit: cover;
+      object-position: center;
       z-index: 0;
       filter: blur(2.5px);
+      pointer-events: none;
+    }
+
+    .bg-scrim {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1536px;
+      height: 100vh;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .content-overlay {
@@ -694,6 +712,39 @@
 
     @media (max-width: 767px) {
       .hide-mobile { display: none !important; }
+      nav { padding: 1rem 1.25rem; }
+      .hero {
+        padding: 1.5rem 1.25rem 2rem;
+        min-height: calc(100vh - 68px);
+      }
+      .hero p { font-size: 0.9375rem; }
+      .download-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+        max-width: 360px;
+        gap: 0.625rem;
+      }
+      .btn-download {
+        justify-content: center;
+        padding: 0.65rem 0.75rem;
+        font-size: 0.8125rem;
+      }
+      .stats-section { padding: 2rem 1.25rem; }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      .stat-card {
+        max-width: none;
+        min-width: 0;
+        padding: 1.125rem 0.75rem;
+      }
+      .stat-number { font-size: 1.5rem; }
+      .telegram-section { padding: 1rem 1.25rem 0.75rem; }
+      .obtainium-section { padding: 0.75rem 1.25rem 1.5rem; }
+      .telegram-card, .obtainium-card { padding: 1.5rem 1.25rem; }
     }
   </style>
 </head>
@@ -701,6 +752,7 @@
 
   <div class="main-section" id="inicio">
     <video class="bg-video" autoplay muted loop playsinline src="assets/bg.mp4"></video>
+    <div class="bg-scrim"></div>
 
     <div class="content-overlay">
       <nav>
@@ -781,11 +833,11 @@
       <section class="telegram-section fade-in">
         <div class="telegram-card">
           <svg class="tg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          <h3>Únete al canal de Telegram</h3>
-          <p>Recibe actualizaciones, noticias y soporte directo. Comparte tu experiencia con la comunidad de KuroMusic.</p>
+          <h3>Contáctame por Telegram</h3>
+          <p>¿Tienes dudas, sugerencias o encontraste algún error? Escríbeme directamente por Telegram.</p>
           <a href="https://t.me/KiritoAPT2" target="_blank" class="btn-telegram">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Abrir Telegram
+            Enviar mensaje
           </a>
         </div>
       </section>
