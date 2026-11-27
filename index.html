@@ -411,150 +411,119 @@
       opacity: 0.6;
     }
 
-    /* ── Telegram Section ── */
-    .telegram-section {
-      padding: 2.5rem 1.5rem 1rem;
+    /* ── Telegram & Obtainium Compact Grid ── */
+    .actions-section {
+      padding: 0.5rem 1.5rem 2rem;
       text-align: center;
     }
 
-    .telegram-card {
-      max-width: 32rem;
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      max-width: 44rem;
       margin: 0 auto;
-      background: rgba(38,166,222,0.06);
+    }
+
+    .telegram-card, .obtainium-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
+      border-radius: 1.125rem;
+      padding: 1.25rem 1.125rem;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .telegram-card {
+      background: rgba(38,166,222,0.06);
       border: 1px solid rgba(38,166,222,0.15);
-      border-radius: 1.5rem;
-      padding: 2rem 1.5rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .telegram-card:hover {
       background: rgba(38,166,222,0.12);
       border-color: rgba(38,166,222,0.3);
       transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(38,166,222,0.15);
-    }
-
-    .telegram-card h3 {
-      color: #fff;
-      font-size: 1.25rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-    }
-
-    .telegram-card p {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.875rem;
-      line-height: 1.5;
-      margin-bottom: 1.25rem;
-    }
-
-    .telegram-card .tg-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      margin: 0 auto 1rem;
-      color: #2CA5E0;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .btn-telegram {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.625rem 1.5rem;
-      border-radius: 999px;
-      background: #2CA5E0;
-      border: none;
-      color: #fff;
-      font-size: 0.875rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .btn-telegram:hover {
-      background: #1E95CF;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(44,165,224,0.4);
-    }
-
-    .btn-telegram svg {
-      width: 1rem;
-      height: 1rem;
-    }
-
-    /* ── Obtainium Section ── */
-    .obtainium-section {
-      padding: 1rem 1.5rem 2rem;
-      text-align: center;
+      box-shadow: 0 8px 24px rgba(38,166,222,0.15);
     }
 
     .obtainium-card {
-      max-width: 32rem;
-      margin: 0 auto;
       background: rgba(16,185,129,0.06);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(16,185,129,0.15);
-      border-radius: 1.5rem;
-      padding: 2rem 1.5rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .obtainium-card:hover {
       background: rgba(16,185,129,0.12);
       border-color: rgba(16,185,129,0.3);
       transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(16,185,129,0.15);
+      box-shadow: 0 8px 24px rgba(16,185,129,0.15);
     }
 
-    .obtainium-card h3 {
+    .telegram-card h3, .obtainium-card h3 {
       color: #fff;
-      font-size: 1.25rem;
+      font-size: 1.05rem;
       font-weight: 500;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
-    .obtainium-card p {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.875rem;
-      line-height: 1.5;
-      margin-bottom: 1.25rem;
+    .telegram-card p, .obtainium-card p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.8125rem;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    .telegram-card .tg-icon, .obtainium-card .obt-icon {
+      width: 1.75rem;
+      height: 1.75rem;
+      margin: 0 auto 0.625rem;
+    }
+
+    .telegram-card .tg-icon {
+      color: #2CA5E0;
+      animation: float 3s ease-in-out infinite;
     }
 
     .obtainium-card .obt-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      margin: 0 auto 1rem;
       color: #10B981;
       animation: float 3s ease-in-out infinite 0.5s;
     }
 
-    .btn-obtainium {
+    .btn-telegram, .btn-obtainium {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.625rem 1.5rem;
+      gap: 0.4rem;
+      padding: 0.5rem 1.125rem;
       border-radius: 999px;
-      background: #10B981;
       border: none;
       color: #fff;
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       font-weight: 500;
       text-decoration: none;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    .btn-telegram { background: #2CA5E0; }
+
+    .btn-telegram:hover {
+      background: #1E95CF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(44,165,224,0.35);
+    }
+
+    .btn-obtainium { background: #10B981; }
+
     .btn-obtainium:hover {
       background: #059669;
       transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(16,185,129,0.4);
+      box-shadow: 0 6px 20px rgba(16,185,129,0.35);
     }
 
-    .btn-obtainium svg {
-      width: 1rem;
-      height: 1rem;
+    .btn-telegram svg, .btn-obtainium svg {
+      width: 0.9rem;
+      height: 0.9rem;
     }
 
     /* ── Floating Cards ── */
@@ -730,21 +699,26 @@
         padding: 0.65rem 0.75rem;
         font-size: 0.8125rem;
       }
-      .stats-section { padding: 2rem 1.25rem; }
+      .stats-section { padding: 1.5rem 1rem; }
       .stats-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
       }
       .stat-card {
         max-width: none;
         min-width: 0;
-        padding: 1.125rem 0.75rem;
+        padding: 0.875rem 0.5rem;
+        border-radius: 1rem;
       }
-      .stat-number { font-size: 1.5rem; }
-      .telegram-section { padding: 1rem 1.25rem 0.75rem; }
-      .obtainium-section { padding: 0.75rem 1.25rem 1.5rem; }
-      .telegram-card, .obtainium-card { padding: 1.5rem 1.25rem; }
+      .stat-number { font-size: 1.25rem; }
+      .stat-label { font-size: 0.65rem; }
+      .actions-section { padding: 0.5rem 1rem 1.5rem; }
+      .actions-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .telegram-card, .obtainium-card { padding: 1.125rem 1rem; }
     }
   </style>
 </head>
@@ -817,11 +791,6 @@
             <div class="stat-label">Stars</div>
           </div>
           <div class="stat-card">
-            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
-            <div class="stat-number" id="totalForks">—</div>
-            <div class="stat-label">Forks</div>
-          </div>
-          <div class="stat-card">
             <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
             <div class="stat-number" id="latestVersion">—</div>
             <div class="stat-label">Versión</div>
@@ -829,29 +798,27 @@
         </div>
       </section>
 
-      <!-- Telegram -->
-      <section class="telegram-section fade-in">
-        <div class="telegram-card">
-          <svg class="tg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          <h3>Contáctame por Telegram</h3>
-          <p>¿Tienes dudas, sugerencias o encontraste algún error? Escríbeme directamente por Telegram.</p>
-          <a href="https://t.me/KiritoAPT2" target="_blank" class="btn-telegram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Enviar mensaje
-          </a>
-        </div>
-      </section>
-
-      <!-- Obtainium -->
-      <section class="obtainium-section fade-in">
-        <div class="obtainium-card">
-          <svg class="obt-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-          <h3>Actualizaciones automáticas</h3>
-          <p>Usa Obtainium para recibir cada nueva versión de KuroMusic automáticamente desde GitHub Releases. Un clic y listo.</p>
-          <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.kuromusic%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FKiritoAPT2%2FKuroMusic%22%2C%22author%22%3A%22KiritoAPT2%22%2C%22name%22%3A%22KuroMusic%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22%5EKuroMusic%5C%5C%5C%5C.apk%24%5C%22%7D%22%7D" class="btn-obtainium">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Agregar a Obtainium
-          </a>
+      <!-- Telegram & Obtainium -->
+      <section class="actions-section fade-in">
+        <div class="actions-grid">
+          <div class="telegram-card">
+            <svg class="tg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            <h3>Contáctame por Telegram</h3>
+            <p>Dudas, sugerencias o errores directo por Telegram.</p>
+            <a href="https://t.me/KiritoAPT2" target="_blank" class="btn-telegram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Enviar mensaje
+            </a>
+          </div>
+          <div class="obtainium-card">
+            <svg class="obt-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            <h3>Actualizaciones automáticas</h3>
+            <p>Recibe cada versión nueva desde GitHub con Obtainium.</p>
+            <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.kuromusic%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FKiritoAPT2%2FKuroMusic%22%2C%22author%22%3A%22KiritoAPT2%22%2C%22name%22%3A%22KuroMusic%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22%5EKuroMusic%5C%5C%5C%5C.apk%24%5C%22%7D%22%7D" class="btn-obtainium">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Agregar a Obtainium
+            </a>
+          </div>
         </div>
       </section>
 
@@ -930,12 +897,11 @@
         document.getElementById('followers').textContent = '—';
       });
 
-    // Fetch repo info (stars, forks)
+    // Fetch repo info (stars)
     fetch('https://api.github.com/repos/KiritoAPT2/KuroMusic')
       .then(r => r.json())
       .then(d => {
         animateCount(document.getElementById('totalStars'), d.stargazers_count || 0);
-        animateCount(document.getElementById('totalForks'), d.forks_count || 0);
       })
       .catch(() => {});
 
