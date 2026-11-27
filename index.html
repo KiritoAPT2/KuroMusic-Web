@@ -29,6 +29,42 @@
 
     ::selection { background: #8B5CF6; color: #fff; }
 
+    /* ── Animations ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(139,92,246,0.3); }
+      50% { box-shadow: 0 0 40px rgba(139,92,246,0.5); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
     .main-section {
       max-width: 1536px;
       margin: 0 auto;
@@ -60,6 +96,7 @@
       z-index: 10;
     }
 
+    /* ── Nav ── */
     nav {
       display: flex;
       align-items: center;
@@ -68,6 +105,7 @@
       width: 100%;
       position: relative;
       z-index: 10;
+      animation: fadeInUp 0.6s ease both;
     }
 
     @media (min-width: 768px) {
@@ -90,12 +128,13 @@
       font-size: 0.875rem;
       color: rgba(255,255,255,0.7);
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-links a:hover {
       color: #fff;
       background: rgba(255,255,255,0.08);
+      transform: translateY(-1px);
     }
 
     .nav-links a.active {
@@ -126,11 +165,13 @@
       color: #fff;
       font-size: 0.8125rem;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .btn-github:hover {
       background: rgba(255,255,255,0.18);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
     .btn-github svg {
@@ -138,6 +179,7 @@
       height: 1rem;
     }
 
+    /* ── Hero ── */
     .hero {
       padding-top: 2rem;
       text-align: center;
@@ -162,6 +204,7 @@
       font-weight: 500;
       color: #A78BFA;
       margin-bottom: 1rem;
+      animation: fadeInScale 0.6s ease 0.2s both;
     }
 
     .badge svg {
@@ -176,6 +219,7 @@
       color: #fff;
       line-height: 1.05;
       text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+      animation: fadeInUp 0.8s ease 0.3s both;
     }
 
     .hero p {
@@ -185,6 +229,7 @@
       max-width: 36rem;
       line-height: 1.625;
       text-shadow: 0 1px 12px rgba(0,0,0,0.4);
+      animation: fadeInUp 0.8s ease 0.5s both;
     }
 
     .tech-logos {
@@ -193,6 +238,7 @@
       justify-content: center;
       gap: 0.75rem;
       margin-top: 1.5rem;
+      animation: fadeInUp 0.8s ease 0.6s both;
     }
 
     .tech-logos img, .tech-logos svg {
@@ -200,8 +246,15 @@
       height: 1.5rem;
       opacity: 0.5;
       filter: drop-shadow(0 1px 6px rgba(0,0,0,0.4));
+      transition: all 0.3s ease;
     }
 
+    .tech-logos img:hover, .tech-logos svg:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    /* ── Download Buttons ── */
     .download-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -209,6 +262,7 @@
       justify-content: center;
       gap: 0.75rem;
       margin-top: 1.5rem;
+      animation: fadeInUp 0.8s ease 0.7s both;
     }
 
     .btn-download {
@@ -222,13 +276,14 @@
       color: #fff;
       font-size: 0.875rem;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
     }
 
     .btn-download:hover {
       background: rgba(255,255,255,0.18);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
 
     .btn-download.primary {
@@ -240,6 +295,31 @@
     .btn-download.primary:hover {
       background: #7C3AED;
       border-color: #7C3AED;
+      box-shadow: 0 6px 25px rgba(139,92,246,0.4);
+    }
+
+    .btn-download.obtainium {
+      background: rgba(16,185,129,0.15);
+      border-color: rgba(16,185,129,0.3);
+      color: #34D399;
+    }
+
+    .btn-download.obtainium:hover {
+      background: rgba(16,185,129,0.25);
+      border-color: rgba(16,185,129,0.5);
+      box-shadow: 0 6px 25px rgba(16,185,129,0.3);
+    }
+
+    .btn-download.telegram {
+      background: rgba(38,166,222,0.15);
+      border-color: rgba(38,166,222,0.3);
+      color: #5BC8F5;
+    }
+
+    .btn-download.telegram:hover {
+      background: rgba(38,166,222,0.25);
+      border-color: rgba(38,166,222,0.5);
+      box-shadow: 0 6px 25px rgba(38,166,222,0.3);
     }
 
     .btn-download svg {
@@ -252,6 +332,214 @@
       opacity: 0.6;
     }
 
+    /* ── Stats Section ── */
+    .stats-section {
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      flex: 1;
+      min-width: 140px;
+      max-width: 220px;
+      background: rgba(139,92,246,0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(139,92,246,0.15);
+      border-radius: 1.25rem;
+      padding: 1.5rem 1rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .stat-card:hover {
+      background: rgba(139,92,246,0.15);
+      border-color: rgba(139,92,246,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(139,92,246,0.2);
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #A78BFA;
+      line-height: 1;
+    }
+
+    .stat-number.animated {
+      animation: countUp 0.5s ease both;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.375rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin: 0 auto 0.5rem;
+      opacity: 0.6;
+    }
+
+    /* ── Telegram Section ── */
+    .telegram-section {
+      padding: 2.5rem 1.5rem 1rem;
+      text-align: center;
+    }
+
+    .telegram-card {
+      max-width: 32rem;
+      margin: 0 auto;
+      background: rgba(38,166,222,0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(38,166,222,0.15);
+      border-radius: 1.5rem;
+      padding: 2rem 1.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .telegram-card:hover {
+      background: rgba(38,166,222,0.12);
+      border-color: rgba(38,166,222,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(38,166,222,0.15);
+    }
+
+    .telegram-card h3 {
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .telegram-card p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .telegram-card .tg-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0 auto 1rem;
+      color: #2CA5E0;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .btn-telegram {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.5rem;
+      border-radius: 999px;
+      background: #2CA5E0;
+      border: none;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-telegram:hover {
+      background: #1E95CF;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(44,165,224,0.4);
+    }
+
+    .btn-telegram svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /* ── Obtainium Section ── */
+    .obtainium-section {
+      padding: 1rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .obtainium-card {
+      max-width: 32rem;
+      margin: 0 auto;
+      background: rgba(16,185,129,0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(16,185,129,0.15);
+      border-radius: 1.5rem;
+      padding: 2rem 1.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .obtainium-card:hover {
+      background: rgba(16,185,129,0.12);
+      border-color: rgba(16,185,129,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(16,185,129,0.15);
+    }
+
+    .obtainium-card h3 {
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .obtainium-card p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .obtainium-card .obt-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0 auto 1rem;
+      color: #10B981;
+      animation: float 3s ease-in-out infinite 0.5s;
+    }
+
+    .btn-obtainium {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.5rem;
+      border-radius: 999px;
+      background: #10B981;
+      border: none;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-obtainium:hover {
+      background: #059669;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(16,185,129,0.4);
+    }
+
+    .btn-obtainium svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    /* ── Floating Cards ── */
     .floating-card {
       position: fixed;
       display: none;
@@ -272,7 +560,8 @@
       border-radius: 1rem;
       padding: 1rem;
       min-width: 180px;
-      transition: all 0.25s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: slideInLeft 0.8s ease 1s both;
     }
 
     @media (min-width: 64rem) {
@@ -313,15 +602,67 @@
       font-size: 0.75rem;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       width: fit-content;
     }
 
     .card-github .btn-follow:hover {
       background: rgba(139,92,246,0.35);
       border-color: rgba(139,92,246,0.6);
+      transform: translateY(-1px);
     }
 
+    /* ── Downloads floating card ── */
+    .card-downloads {
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: rgba(16,185,129,0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(16,185,129,0.25);
+      border-radius: 1rem;
+      padding: 1rem;
+      min-width: 160px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: slideInRight 0.8s ease 1.2s both;
+      text-align: center;
+    }
+
+    @media (min-width: 64rem) {
+      .card-downloads {
+        bottom: 2.5rem;
+        right: 2.5rem;
+      }
+    }
+
+    .card-downloads:hover {
+      background: rgba(16,185,129,0.22);
+      border-color: rgba(16,185,129,0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(16,185,129,0.2);
+    }
+
+    .card-downloads .dl-count {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #34D399;
+    }
+
+    .card-downloads .dl-label {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card-downloads .dl-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #34D399;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ── Footer ── */
     .footer {
       text-align: center;
       padding: 2rem 1.5rem;
@@ -332,12 +673,18 @@
     .footer a {
       color: #8B5CF6;
       text-decoration: none;
+      transition: color 0.2s;
     }
 
+    .footer a:hover {
+      color: #A78BFA;
+    }
+
+    /* ── Fade-in observer ── */
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(25px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .fade-in.visible {
@@ -393,6 +740,66 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             Código Fuente
           </a>
+          <a href="https://t.me/KiritoAPT2" target="_blank" class="btn-download telegram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            Telegram
+          </a>
+          <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.kuromusic%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FKiritoAPT2%2FKuroMusic%22%2C%22author%22%3A%22KiritoAPT2%22%2C%22name%22%3A%22KuroMusic%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22%5EKuroMusic%5C%5C%5C%5C.apk%24%5C%22%7D%22%7D" class="btn-download obtainium">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Obtainium <span class="sub-text">(auto-update)</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="stats-section fade-in">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <div class="stat-number" id="totalDownloads">—</div>
+            <div class="stat-label">Descargas</div>
+          </div>
+          <div class="stat-card">
+            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <div class="stat-number" id="totalStars">—</div>
+            <div class="stat-label">Stars</div>
+          </div>
+          <div class="stat-card">
+            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+            <div class="stat-number" id="totalForks">—</div>
+            <div class="stat-label">Forks</div>
+          </div>
+          <div class="stat-card">
+            <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <div class="stat-number" id="latestVersion">—</div>
+            <div class="stat-label">Versión</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Telegram -->
+      <section class="telegram-section fade-in">
+        <div class="telegram-card">
+          <svg class="tg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          <h3>Únete al canal de Telegram</h3>
+          <p>Recibe actualizaciones, noticias y soporte directo. Comparte tu experiencia con la comunidad de KuroMusic.</p>
+          <a href="https://t.me/KiritoAPT2" target="_blank" class="btn-telegram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Abrir Telegram
+          </a>
+        </div>
+      </section>
+
+      <!-- Obtainium -->
+      <section class="obtainium-section fade-in">
+        <div class="obtainium-card">
+          <svg class="obt-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          <h3>Actualizaciones automáticas</h3>
+          <p>Usa Obtainium para recibir cada nueva versión de KuroMusic automáticamente desde GitHub Releases. Un clic y listo.</p>
+          <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.kuromusic%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FKiritoAPT2%2FKuroMusic%22%2C%22author%22%3A%22KiritoAPT2%22%2C%22name%22%3A%22KuroMusic%22%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22%5EKuroMusic%5C%5C%5C%5C.apk%24%5C%22%7D%22%7D" class="btn-obtainium">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Agregar a Obtainium
+          </a>
         </div>
       </section>
 
@@ -402,6 +809,7 @@
     </div>
   </div>
 
+  <!-- Floating GitHub card (left) -->
   <div class="floating-card card-github">
     <div class="follow-count" id="followers">—</div>
     <div class="follow-label">Seguidores en GitHub</div>
@@ -415,7 +823,15 @@
     </a>
   </div>
 
+  <!-- Floating Downloads card (right) -->
+  <div class="floating-card card-downloads">
+    <svg class="dl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <div class="dl-count" id="floatingDownloads">—</div>
+    <div class="dl-label">Descargas totales</div>
+  </div>
+
   <script>
+    // Intersection observer for fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -424,6 +840,7 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+    // Active nav tracking
     const navItems = document.querySelectorAll('.nav-links a');
     const sections = ['inicio', 'features'].map(id => document.getElementById(id)).filter(Boolean);
 
@@ -437,6 +854,21 @@
       if (current) current.classList.add('active');
     });
 
+    // Animated counter
+    function animateCount(el, target) {
+      const duration = 1200;
+      const start = performance.now();
+      const from = 0;
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(from + (target - from) * eased).toLocaleString('es');
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Fetch GitHub user (followers)
     fetch('https://api.github.com/users/KiritoAPT2')
       .then(r => r.json())
       .then(d => {
@@ -445,6 +877,31 @@
       .catch(() => {
         document.getElementById('followers').textContent = '—';
       });
+
+    // Fetch repo info (stars, forks)
+    fetch('https://api.github.com/repos/KiritoAPT2/KuroMusic')
+      .then(r => r.json())
+      .then(d => {
+        animateCount(document.getElementById('totalStars'), d.stargazers_count || 0);
+        animateCount(document.getElementById('totalForks'), d.forks_count || 0);
+      })
+      .catch(() => {});
+
+    // Fetch total downloads from all releases
+    fetch('https://api.github.com/repos/KiritoAPT2/KuroMusic/releases')
+      .then(r => r.json())
+      .then(releases => {
+        let total = 0;
+        let latest = '';
+        releases.forEach((rel, i) => {
+          if (i === 0) latest = rel.tag_name;
+          rel.assets.forEach(a => { total += a.download_count; });
+        });
+        animateCount(document.getElementById('totalDownloads'), total);
+        animateCount(document.getElementById('floatingDownloads'), total);
+        document.getElementById('latestVersion').textContent = latest || '—';
+      })
+      .catch(() => {});
   </script>
 </body>
 </html>
